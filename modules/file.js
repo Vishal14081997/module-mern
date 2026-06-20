@@ -98,8 +98,13 @@ const http = require("http");
 // http - Hypertext Transfer Protocol
 
 const server = http.createServer((req,res)=>{
-    console.log("hello vishal");
-    res.end("hello grras")
+    if(req.url === "/" && req.method === "POST"){
+        res.end("this is a / route request")
+    } else if(req.url === "/home"){
+        res.end("this is a /home route request")
+    } else {
+        res.end("hello grras ,this is a http request")
+    }
 });
 server.listen(5000 ,()=>{
     console.log("server is running on port 5000");
